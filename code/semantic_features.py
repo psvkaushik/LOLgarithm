@@ -3,6 +3,7 @@ import numpy as np
 from nltk import pos_tag
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import wordnet as wn, cmudict
+import collections
 
 import gensim
 from gensim.models import Word2Vec
@@ -150,59 +151,36 @@ def get_phonemes(word):
     return d[word][0] if word in d else None
 
 
-# Function to get alliteration and rhyme
-def detect_alliteration_rhyme(words):
-    alliteration_chains = 0
-    max_alliteration_chain_length = 0
+def get_alliteration_rhyme_chains(words):
+    """
+    Returns
+    For exploration
+    ---------
+    start_phenome : dictionary containing all the starting phonemes
+    end_phenome : dictionary containing all the ending phonemes
+    ---------
 
-    rhyme_chains = 0
-    max_rhyme_chain_length = 0
-
-    prev_phoneme = None
-    alliteration_chain_length = 1
-    rhyme_chain_length = 1
-
+    The features
+    -----
+    len(start_phenome.values()) : the total number of starting phonemes -> number of alliteration chains
+    len(end_phenome.values()) : the total number of ending phonemes -> number of rhyme chains
+    max(start_phenome.values()) : The max values of the alliteration string -> maximum length of alliteration chains
+    max(end_phenome.values()) : The max values of the alliteration string -> maximum length of rhyme chains
+    ------
+    """
+    start_phenome = collections.defaultdict(int)
+    end_phenome = collections.defaultdict(int)
     for word in words:
         phonemes = get_phonemes(word)
-
         if phonemes:
-            first_phoneme = phonemes[0]
-            last_phoneme = phonemes[-1]
+            start_phenome[phonemes[0]]+=1
+            end_phenome[phonemes[-1]]+=1
+    if start_phenome and end_phenome:
+        return start_phenome, end_phenome, len(start_phenome.values()), len(end_phenome.values()), max(start_phenome.values()), max(end_phenome.values())
+    elif start_phenome:
+        return start_phenome, end_phenome, len(start_phenome.values()), len(end_phenome.values()), max(start_phenome.values()), 0
+    elif start_phenome:
+        return start_phenome, end_phenome, len(start_phenome.values()), len(end_phenome.values()), 0, max(end_phenome.values())
+    else:
+        return start_phenome, end_phenome, len(start_phenome.values()), len(end_phenome.values()), 0, 0
 
-            if prev_phoneme and first_phoneme == prev_phoneme:
-                alliteration_chain_length += 1
-            else:
-                max_alliteration_chain_length = max(max_alliteration_chain_length, alliteration_chain_length)
-                if alliteration_chain_length > 1:
-                    alliteration_chains += 1
-                alliteration_chain_length = 1
-
-            if prev_phoneme and last_phoneme == prev_phoneme:
-                rhyme_chain_length += 1
-            else:
-                max_rhyme_chain_length = max(max_rhyme_chain_length, rhyme_chain_length)
-                if rhyme_chain_length > 1:
-                    rhyme_chains += 1
-                rhyme_chain_length = 1
-
-            prev_phoneme = last_phoneme
-
-    return alliteration_chains, max_alliteration_chain_length, rhyme_chains, max_rhyme_chain_length
-
-
-# Get Phonetic Style
-def phonetic_style(words_list):
-  alliteration_list = []
-  max_alliteration_list = []
-  rhyme_list = []
-  max_rhyme_list = []
-
-  for sentence in tqdm(words_list):
-    alliteration_chains, max_alliteration_chain_length, rhyme_chains, max_rhyme_chain_length = detect_alliteration_rhyme(sentence)
-
-    alliteration_list.append(alliteration_chains)
-    max_alliteration_list.append(max_alliteration_chain_length)
-    rhyme_list.append(rhyme_chains)
-    max_rhyme_list.append(max_rhyme_chain_length)
-
-  return alliteration_list, max_alliteration_list, rhyme_list, max_rhyme_list
