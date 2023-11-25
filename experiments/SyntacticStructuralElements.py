@@ -1,5 +1,6 @@
 """ Performs Statistics of Structural Elements and returns an embedding which represents
     the SSE of a sentence
+    Save Syntactical Features in CSV format
 """
 
 import pandas as pd
@@ -139,7 +140,7 @@ def get_syntactic_features(sentences):
                 avg_NP_len, avg_VP_len, avg_PP_len, rpnv])
     return sse_features
 
-
+# Save syntactic features
 sse_features = get_syntactic_features(sentences)
 
 sse_features_columns = ['np_count', 'vp_count', 'pp_count', 'sbar_count',
