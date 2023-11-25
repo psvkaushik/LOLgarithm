@@ -95,7 +95,7 @@ def get_pos_tagged_sentences(words_list):
     return pos_tagged_sentences
 
 # Get sense combiination score
-def sense_comination(pos_tagged_sentences):
+def sense_combination(pos_tagged_sentences):
     sense_combination_list = []
     for sentence in tqdm(pos_tagged_sentences):
         sense_combination = 0
@@ -184,3 +184,16 @@ def get_alliteration_rhyme_chains(words):
     else:
         return start_phenome, end_phenome, len(start_phenome.values()), len(end_phenome.values()), 0, 0
 
+def get_alliteration_rhyme_features(sentences):
+    """
+    Extracts and Returns the alliteration and Rhyme features for all the sentences
+    """
+    phonetic_style_features = []
+    sps = []
+    eps = []
+    for sentence in tqdm(sentences):
+        sp, ep, num_alliteration_chains, num_rhyme_chains, max_all_chain, max_rhyme_chain = get_alliteration_rhyme_chains(sentence.split(' '))
+        sps.append(sp)
+        eps.append(ep)
+        phonetic_style_features.append([num_alliteration_chains, num_rhyme_chains, max_all_chain, max_rhyme_chain])
+    return phonetic_style_features, eps, sps
