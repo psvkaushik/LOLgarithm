@@ -36,7 +36,7 @@ PATTERN = r'[^A-Za-z0-9\s]'
 op = []
 for joke in tqdm.tqdm(jokes):
     processed_joke = re.sub(PATTERN, '', joke)
-    words = joke.split(' ')
+    words = processed_joke.split(' ')
     temp = [0]*10
     for word in words:
         lexs = NRCLex(word).top_emotions
