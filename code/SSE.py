@@ -16,9 +16,9 @@ nltk.download('universal_tagset')
 
 
 
-dataset = pd.read_csv(r"C:\Users\psvka\OneDrive\Desktop\fall23\csc791\LOLgarithm\dataset\dataset.csv")
-sentences = list(dataset['text'])
-labels = list(dataset['humor'])
+# dataset = pd.read_csv(r"C:\Users\psvka\OneDrive\Desktop\fall23\csc791\LOLgarithm\dataset\dataset.csv")
+# sentences = list(dataset['text'])
+# labels = list(dataset['humor'])
 
 # Function to extract phrases
 def extract_phrases(sentence):
@@ -32,9 +32,11 @@ def extract_phrases(sentence):
 
     # This is the default grammar we've chosen to work with.
     grammar = r"""
-        NP: {<DT|PRP\$>?<JJ.*>*<NN.*>+}  # Noun Phrase
+        #Noun Phrases
+        NP: {<DT|PRP\$>?<JJ.*>*<NN.*>+} 
         VP: {<VB.*><NP|PP|RB>*}          # Verb Phrase
         PP: {<IN><NP>}                    # Prepositional Phrase
+        PP: {<PRP><NP>}                    #From L1
         S: {<NP><VP>}                     # Simple Sentence
         SBAR: {<IN|DT|RB><S>}             # Subordinate Clause
     """
@@ -140,6 +142,10 @@ def get_syntactic_features(sentences):
     return sse_features
 
         
-sse_features = get_syntactic_features(sentences)
+# sse_features = get_syntactic_features(sentences)
+# feature_names = ['np_count', 'vp_count', 'pp_count', 'sbar_count',
+#                 'np_ratio', 'vp_ratio', 'pp_ratio', 'phrase_length_ratios_VP',
+#                 'phrase_length_ratios_NP', 'phrase_length_ratios_PP',
+#                 'avg_NP_len', 'avg_VP_len', 'avg_PP_len', 'rpnv']
 
-train_data_X, test_data_X, train_data_Y, test_data_Y = train_test_split(sse_features, labels, test_size=0.3)
+# train_data_X, test_data_X, train_data_Y, test_data_Y = train_test_split(sse_features, labels, test_size=0.3)
