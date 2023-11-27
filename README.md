@@ -14,8 +14,16 @@ Integrating Semantic, Syntactic, and Contextual Elements for Humor Classificatio
 * [Folder Structure](#Folder_Structure)
 * [Run Instructions](#Run_Instructions)
 
-## Installation
 
+```
+
+## Approach
+In this work, we formulate humor recognition as a classification task in which we distinguish between humorous and non-humorous instances.
+Exploring the syntactical structure involves leveraging Lexicons to capture sentiment counts within a sentence, while Statistics of Structural Elements (SSE) encapsulates the statistical insights of Noun phrases, Word phrases, and more. Unveiling the semantic layers of humor delves into Word2Vec embeddings, analyzing incongruity, ambiguity, and phonetic structures within sentences. Additionally, contextual information is harnessed through ColBERT embeddings. For each latent structure, we design a set of
+features to capture the potential indicators of humor. 
+
+## Installation
+### Dependencies required:
 Set up the following environment
 * python 
 * tensorflow 
@@ -56,15 +64,6 @@ pip install --upgrade gensim
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
 nltk.download('cmudict')
-```
-
-## Approach
-In this work, we formulate humor recognition as a classification task in which we distinguish between humorous and non-humorous instances.
-Exploring the syntactical structure involves leveraging Lexicons to capture sentiment counts within a sentence, while Statistics of Structural Elements (SSE) encapsulates the statistical insights of Noun phrases, Word phrases, and more. Unveiling the semantic layers of humor delves into Word2Vec embeddings, analyzing incongruity, ambiguity, and phonetic structures within sentences. Additionally, contextual information is harnessed through ColBERT embeddings. For each latent structure, we design a set of
-features to capture the potential indicators of humor. 
-
-## Installation
-### Dependencies required: 
 
 ## Folder_Structure
 ##### Following are the modules we built for the project:
