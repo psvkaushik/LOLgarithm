@@ -32,6 +32,7 @@ emotion_map = {
 # labels = list(dataset['humor'])
 
 PATTERN = r'[^A-Za-z0-9\s]'
+
 def get_emotion_features(jokes):
     op = []
     for joke in tqdm(jokes):
