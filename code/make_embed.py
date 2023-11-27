@@ -3,11 +3,11 @@ import pandas as pd
 from gensim.models import Word2Vec
 from SSE import get_syntactic_features
 from data_NRC import get_emotion_features
-from semantic_features import clean_data, get_pos_tagged_sentences,sense_combination, path_similarity, incongruity, get_alliteration_rhyme_features
+from semantic_features import clean_data, get_pos_tagged_sentences,sense_combination, incongruity, get_alliteration_rhyme_features
 import numpy as np
 
-data = pd.read_csv(r"C:\Users\psvka\Downloads\data_with_distfeatures.csv", index_col=0)
-print(data.head())
+#data = pd.read_csv(r"C:\Users\psvka\Downloads\data_with_distfeatures.csv", index_col=0)
+#print(data.head())
 
 def make_embeddings(data: pd.DataFrame, emotions_list : list = ['all'], sse_list : list = ['all'], semantic_list : list = ['all'], SKIPGRAM: int = 1):
 
@@ -34,7 +34,7 @@ def make_embeddings(data: pd.DataFrame, emotions_list : list = ['all'], sse_list
                 'avg_NP_len':10, 'avg_VP_len':11, 'avg_PP_len':12, 'rpnv': 13}
     
 
-    jokes = data['text'][:100]
+    jokes = data['text']
     emotion_features = np.array(get_emotion_features(jokes))
     sse_features = np.array(get_syntactic_features(jokes))
     ### semantic features
@@ -52,17 +52,28 @@ def make_embeddings(data: pd.DataFrame, emotions_list : list = ['all'], sse_list
     phonetic_style_features, eps, sps = get_alliteration_rhyme_features(jokes)
     phonetic_style_features = np.array(phonetic_style_features)
     
-    semantic_map = {
-        'disconnection': disconnection_list,
-        'repitition' : repetition_list,
-        'sense_combination': sense_combination_list,
-        'num_alliteration' : phonetic_style_features[:, 0],
-        'num_rhymes' : phonetic_style_features[:, 1],
-        'max_alliteration' : phonetic_style_features[:, 2],
-        'max_rhymes' : phonetic_style_features[:, 3],
-        'closest_path': list(data['closest']),
-        'farthest_path': list(data['farthest'])
-    }
+    try:
+        semantic_map = {
+            'disconnection': disconnection_list,
+            'repitition' : repetition_list,
+            'sense_combination': sense_combination_list,
+            'num_alliteration' : phonetic_style_features[:, 0],
+            'num_rhymes' : phonetic_style_features[:, 1],
+            'max_alliteration' : phonetic_style_features[:, 2],
+            'max_rhymes' : phonetic_style_features[:, 3],
+            'closest_path': list(data['closest']),
+            'farthest_path': list(data['farthest'])
+        }
+    except:
+        semantic_map = {
+            'disconnection': disconnection_list,
+            'repitition' : repetition_list,
+            'sense_combination': sense_combination_list,
+            'num_alliteration' : phonetic_style_features[:, 0],
+            'num_rhymes' : phonetic_style_features[:, 1],
+            'max_alliteration' : phonetic_style_features[:, 2],
+            'max_rhymes' : phonetic_style_features[:, 3]
+            }
     filtered_emotion_features = []
     if emotions_list == ['all']:
         filtered_emotion_features = emotion_features
@@ -114,14 +125,14 @@ sse_list=['vp_count', 'avg_VP_len', 'rpnv', 'phrase_length_ratios_NP', 'phrase_l
 # NOTE : for filtered_semantic_features, the output is of dimension len(semantic_list) x 2,00,000 x whatever the dimension that feature has, so 
 # make sure to unpack(contd.....)
 # NOTE: (contd....) for below example filtered_semantic_features is unpacked into those five variables.
-semantic_list = ['disconnection', 'sense_combination', 'num_alliteration', 'max_alliteration', 'closest_path']
-filtered_emotion_features, filtered_sse_features, filtered_semantic_features= make_embeddings(data, emotions_list, sse_list, semantic_list)
-disconnection, sense_combination, num_alliteration, max_alliteration, closest_path = filtered_semantic_features[0], filtered_semantic_features[1], filtered_semantic_features[2], filtered_semantic_features[3], filtered_semantic_features[4]
-print(np.shape(filtered_emotion_features))
-print(np.shape(filtered_sse_features))
-print(np.shape(disconnection))
-print(np.shape(sense_combination))
-print(np.shape(num_alliteration))
-print(np.shape(max_alliteration))
-print(len(closest_path))
+# semantic_list = ['disconnection', 'sense_combination', 'num_alliteration', 'max_alliteration', 'closest_path']
+# filtered_emotion_features, filtered_sse_features, filtered_semantic_features= make_embeddings(data, emotions_list, sse_list, semantic_list)
+# disconnection, sense_combination, num_alliteration, max_alliteration, closest_path = filtered_semantic_features[0], filtered_semantic_features[1], filtered_semantic_features[2], filtered_semantic_features[3], filtered_semantic_features[4]
+# print(np.shape(filtered_emotion_features))
+# print(np.shape(filtered_sse_features))
+# print(np.shape(disconnection))
+# print(np.shape(sense_combination))
+# print(np.shape(num_alliteration))
+# print(np.shape(max_alliteration))
+# print(len(closest_path))
 

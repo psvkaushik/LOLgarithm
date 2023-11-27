@@ -14,8 +14,6 @@ def scrape_one_liners(url):
     if response.status_code == 200:
         # Parse the HTML content using BeautifulSoup
         soup = BeautifulSoup(response.text, 'html.parser')
-        #print(soup)
-        # Find the <div> elements containing the one-liners
         ol_elements = soup.find_all(re.compile('ol'))
         # Extract and print the text of each <li> element within the <ol>
         for index, ol_element in enumerate(ol_elements, start=1):
@@ -29,5 +27,6 @@ def scrape_one_liners(url):
 
 url_to_scrape = 'https://bestlifeonline.com/funny-one-liners/'
 scraped_jokes = scrape_one_liners(url_to_scrape)
-print(len(scraped_jokes))
+# print(len(scraped_jokes))
+# print(scraped_jokes)
 

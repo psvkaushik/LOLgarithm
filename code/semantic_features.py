@@ -29,8 +29,8 @@ def clean_data(jokes):
     words_list = []
     for joke in jokes:
         joke = joke.lower()
-        processed_joke = re.sub(PATTERN, '', joke)
-        words = processed_joke.split(' ')
+        #processed_joke = re.sub(PATTERN, '', joke)
+        words = joke.split(' ')
         words_list.append(words)
 
     return words_list
