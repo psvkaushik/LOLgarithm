@@ -104,7 +104,7 @@ def sense_combination(pos_tagged_sentences):
                 synsets = wn.synsets(word, pos=pos[0].lower())
                 if synsets:
                     num_senses = len(synsets)
-                    sense_combination += math.log(num_senses) ##################### CHECK FORMULA ###################
+                    sense_combination += math.log(num_senses) 
         sense_combination = math.exp(sense_combination)
         sense_combination_list.append(sense_combination)
 
