@@ -1,7 +1,7 @@
 ## CSC791 - Natural Language Processing
 
 ### Team 
-- Kaushik Pillalamari 
+- Kaushik Pillalamarri 
 - Tanisha Khurana 
 - Vikram Pande
   
@@ -67,7 +67,7 @@ nltk.download('cmudict')
 ```
 ## Folder_Structure
 ##### Following are the modules we built for the project:
-- Code
+- Code: Contains Modular Python Files
   1.  ```data_NRC.py```: contains the functions to generate NRCLex features (Part of Syntactical features).
   2.  ```SSE.py```: contains the functions to generate Statistics of Structural Elements features (Part of Syntactic features).
   3.  ```semantic_features.py```: contains the functions to generate Semantic features.
@@ -75,7 +75,9 @@ nltk.download('cmudict')
   5.  ```test_features.py```: script to generate features for unseen data.
   6.  ```make_embed.py```: script to generate combined features - NRCLex, SSE, Semantic.
   7.  ```baseline_model.py```: Baseline Decision Tree model for Feature Engineering.
-- experiments
+  8.  ```Colbert_training.py```: Script to train Colbert only with contextual embeddings.
+  9.  ```Colbert_w_training.py```: Script to train Colbert only with contextual and hand-crafted features.
+- experiments: Contains Notebooks of Experiments performed. 
   1.  ```Colbert_dataset.ipynb```: contains experiments with the Colbert dataset to get contextual embeddings.
   2.  ```baseline_book.ipynb```: contains Decision Tree analysis on NRCLex features.
   3.  ```feature_engg_notebook.ipynb```: contains feature engineering with Decision Trees and Gradient Boost with SHAP for all 4 features - nrclex, syntactic, semantic, combined.
@@ -83,7 +85,8 @@ nltk.download('cmudict')
   5.  ```semantic-word2vec-expts_v2.ipynb```: semantic feature experiments v2.
   6.  ```semantic-word2vec-expts.ipynb```: semantic feature experiments.
   7.  ```sse_book.ipynb```: Baseline Decision Tree model on structural symantic elements.
-- dataset
+  8.  ```Colbert_train.ipynb```: Experiments to train Colbert with contextual and hand-crafted features.
+- dataset: Contains Data files.
   1. ```combined-features.csv```: contains combined NRCLex, SSE, and Semantic features (200000, 33)
   2. ```dataset.csv```: ColBERT dataset containing jokes and labels.
   3. ```nrclex-features.csv```: NRCLex features
@@ -91,9 +94,9 @@ nltk.download('cmudict')
   5. ```semantic-features.csv```: Semantic features - Incongruity, Ambiguity, Phonetic Style
   6. ```sample_input.csv```: Sample ColBERT model input to accept.
   7. ```reddit_test_features.csv```: Unseen scraped dataset
-- figures
+- figures: Contains Figures and Graphs.
   - Figures of Decision Trees and SHAP analysis for feature engineering on NRCLex, Syntactic, Semantic, and Combined features to find important features for decision.
-- models
+- models: Contains Saved Models.
   - Decision Tree, GradientBoost models for feature engineering on NRCLex, Syntactic, Semantic, and Combined features.
 
 ## Run_Instructions
