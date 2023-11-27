@@ -8,12 +8,55 @@
 # LOLgorithm
 Integrating Semantic, Syntactic, and Contextual Elements for Humor Classification
 
-## Table of content
+## Table of contents
 * [Approach](#Approach)
 * [Installation](#Installation)
-* [Folder Structure](#Folder Structure)
-* [Run Instructions](#Run Instructions)
-This readme contains the directory structure.
+* [Folder Structure](#Folder_Structure)
+* [Run Instructions](#Run_Instructions)
+
+## Installation
+
+Set up the following environment
+* python 
+* tensorflow 
+* scikit-learn
+* pandas
+* numpy
+* NLTK
+* shap 
+* seaborn 
+* matplotlib
+* graphviz
+* pickle
+* transformers
+* regex
+* nrclex
+* tqdm
+* scipy
+* gensim
+  
+```
+conda create -n lolgorithm
+conda activate lolgorithm
+pip install tensorflow
+pip install scikit-learn
+pip install pandas
+pip install numpy
+pip install --user -U nltk
+pip install shap
+pip install seaborn
+pip install -U matplotlib
+pip install graphviz
+pip install transformers
+pip install NRCLex
+pip install tqdm
+pip install scipy
+pip install --upgrade gensim
+
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+nltk.download('cmudict')
+```
 
 ## Approach
 In this work, we formulate humor recognition as a classification task in which we distinguish between humorous and non-humorous instances.
@@ -23,7 +66,7 @@ features to capture the potential indicators of humor.
 ## Installation
 ### Dependencies required: 
 
-## Folder Structure
+## Folder_Structure
 ##### Following are the modules we built for the project:
 - Code
   1.  ```data_NRC.py```: contains the functions to generate NRCLex features (Part of Syntactical features).
@@ -54,7 +97,7 @@ features to capture the potential indicators of humor.
 - models
   - Decision Tree, GradientBoost models for feature engineering on NRCLex, Syntactic, Semantic, and Combined features.
 
-## Run Instructions
+## Run_Instructions
 #### How to run? Steps for running the code:
 1. The directory contains all the necessary files, download/clone the repository.
 2. Copy the data in the same  directory.
