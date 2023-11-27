@@ -41,9 +41,9 @@ This readme contains the directory structure.
   6. ```sample_input.csv```: Sample ColBERT model input to accept.
   7. ```reddit_test_features.csv```: Unseen scraped dataset
 - figures
-  Figures of Decision Trees and SHAP analysis for feature engineering on NRCLex, Syntactic, Semantic, and Combined features to find important features for decision.
+  - Figures of Decision Trees and SHAP analysis for feature engineering on NRCLex, Syntactic, Semantic, and Combined features to find important features for decision.
 - models
-  Decision Tree, GradientBoost models for feature engineering on NRCLex, Syntactic, Semantic, and Combined features.
+  - Decision Tree, GradientBoost models for feature engineering on NRCLex, Syntactic, Semantic, and Combined features.
 
 #### How to run? Steps for running the code:
 1. The directory contains all the necessary files, download/clone the repository.
