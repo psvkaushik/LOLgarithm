@@ -15,7 +15,7 @@ Integrating Semantic, Syntactic, and Contextual Elements for Humor Classificatio
 * [Run Instructions](#Run_Instructions)
 
 
-```
+
 
 ## Approach
 In this work, we formulate humor recognition as a classification task in which we distinguish between humorous and non-humorous instances.
@@ -64,7 +64,7 @@ pip install --upgrade gensim
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
 nltk.download('cmudict')
-
+```
 ## Folder_Structure
 ##### Following are the modules we built for the project:
 - Code
