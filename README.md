@@ -1,20 +1,29 @@
 ## CSC791 - Natural Language Processing
 
 ### Team 
-
 - Kaushik Pillalamari 
 - Tanisha Khurana 
 - Vikram Pande
   
-# LOLgarithm
+# LOLgorithm
 Integrating Semantic, Syntactic, and Contextual Elements for Humor Classification
 
+## Table of content
+* [Approach](#Approach)
+* [Installation](#Installation)
+* [Folder Structure](#Folder Structure)
+* [Run Instructions](#Run Instructions)
+This readme contains the directory structure.
+
+## Approach
 In this work, we formulate humor recognition as a classification task in which we distinguish between humorous and non-humorous instances.
 Exploring the syntactical structure involves leveraging Lexicons to capture sentiment counts within a sentence, while Statistics of Structural Elements (SSE) encapsulates the statistical insights of Noun phrases, Word phrases, and more. Unveiling the semantic layers of humor delves into Word2Vec embeddings, analyzing incongruity, ambiguity, and phonetic structures within sentences. Additionally, contextual information is harnessed through ColBERT embeddings. For each latent structure, we design a set of
 features to capture the potential indicators of humor. 
 
-This readme contains the directory structure. 
+## Installation
+### Dependencies required: 
 
+## Folder Structure
 ##### Following are the modules we built for the project:
 - Code
   1.  ```data_NRC.py```: contains the functions to generate NRCLex features (Part of Syntactical features).
@@ -45,6 +54,7 @@ This readme contains the directory structure.
 - models
   - Decision Tree, GradientBoost models for feature engineering on NRCLex, Syntactic, Semantic, and Combined features.
 
+## Run Instructions
 #### How to run? Steps for running the code:
 1. The directory contains all the necessary files, download/clone the repository.
 2. Copy the data in the same  directory.
