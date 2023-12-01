@@ -103,4 +103,4 @@ nltk.download('cmudict')
 #### How to run? Steps for running the code:
 1. The directory contains all the necessary files, download/clone the repository.
 2. Copy the data in the same  directory.
-3. Run ```notebook.ipynb``` that generates the prediction files.
+3. Run ```bert_combined_feats.ipynb``` used for predictions of unseen test data + Hand crafted features with BERT.
