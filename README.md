@@ -104,3 +104,4 @@ nltk.download('cmudict')
 1. The directory contains all the necessary files, download/clone the repository.
 2. Copy the data in the same  directory.
 3. Run ```bert_combined_feats.ipynb``` used for predictions of unseen test data + Hand crafted features with BERT.
+4. Run ```colbert_feature_pred.ipynb``` used for predictions of unseen test data + Hand crafted features with Colbert.
